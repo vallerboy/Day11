@@ -59,11 +59,11 @@ public class Person implements Comparable<Person>{
                 "name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", age=" + age +
-                '}';
+                '}' + "\n";
     }
 
     @Override
     public int compareTo(Person o) {
-        return 0;
+        return age - o.getAge();
     }
 }
