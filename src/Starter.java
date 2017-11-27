@@ -9,17 +9,13 @@ public class Starter {
         personList.add(new Person("Kamila", "Brygiel", 30));
         personList.add(new Person("Tomek", "Jankowski", 81));
 
-        Collections.sort(personList, new LastnameComparator());
+        //Collections.sort(personList, new Person.LastnameComparator());
 
-        //Set<Person> set = new TreeSet<>(personList);
+        Set<Person> set = new TreeSet<>(new Person.LastnameNameAndAgeComparator());
+        set.addAll(personList);
 
-        System.out.println(personList);
+        System.out.println(set);
     }
 
-    public static class LastnameComparator implements Comparator<Person>{
-        @Override
-        public int compare(Person o1, Person o2) {
-            return o1.getLastname().compareTo(o2.getLastname());
-        }
-    }
+
 }

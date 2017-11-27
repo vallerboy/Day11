@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Person implements Comparable<Person>{
     private String name;
     private String lastname;
@@ -66,4 +68,26 @@ public class Person implements Comparable<Person>{
     public int compareTo(Person o) {
         return age - o.getAge();
     }
+
+    public static class LastnameComparator implements Comparator<Person> {
+        @Override
+        public int compare(Person o1, Person o2) {
+            return o1.getLastname().compareTo(o2.getLastname());
+        }
+    }
+
+    public static class LastnameNameAndAgeComparator implements Comparator<Person> {
+        @Override
+        public int compare(Person o1, Person o2) {
+            int result = o1.getLastname().compareTo(o2.getLastname());
+            if(result != 0){
+                return result;
+            }else if( o1.getName().compareTo(o2.getName()) != 0){
+                return o1.getName().compareTo(o2.getName());
+            }else{
+                return Integer.compare(o1.getAge(), o2.getAge());
+            }
+        }
+    }
+
 }
